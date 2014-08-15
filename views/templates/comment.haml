@@ -1,0 +1,9 @@
+%b Foredrag: #{get_spot_name(key)}
+%br
+- comment.each do | key, value |
+  %div.comment{:style => "background: #eee;"}
+    Navn: #{value["name"]}
+    %br
+    Kommentar: #{value["message"]}
+    %br
+  .padding

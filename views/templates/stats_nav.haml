@@ -1,0 +1,17 @@
+%ul.nav.navbar-nav
+  %li.active{:style => "float: left;"}
+    %a{:href => "/stats"}
+      Generelt
+  %li{:style => "float: left;"}
+    %a{:href => "/stats/comments"}
+      Kommentarer
+      %span.label.label-info
+        =get_comment_count
+  %li{:style => "float: left;"}
+    %a{:href => "/stats/presentation"}
+      Foredrag
+  %li{:style => "float: left;"}
+    %a{:href => "/stats/suggestions"}
+      Forslag
+      %span.label.label-info
+        =get_suggestion_count

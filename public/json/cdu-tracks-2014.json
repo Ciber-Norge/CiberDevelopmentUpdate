@@ -1,0 +1,110 @@
+{
+  "Felles": {
+    "program": {
+      "09:00": {
+        "title": "Practical info",
+        "speaker": "Christian Lundestad",
+        "description": "",
+        "duration": "5",
+        "id": "4523f75d"
+      },
+      "09:05": {
+        "title": "Welcome",
+        "speaker": "Marianne Selle",
+        "description": "",
+        "duration": "15",
+        "id": "b43c96f8"
+      },
+      "09:20": {
+        "title": "Keynotes Mobility, .NET, eCommerce",
+        "speaker": "Christian Aamodt, Andreas Brustad, Jørn Ole Skaaraas",
+        "description": "",
+        "duration": "40",
+        "id": "4f9e6afd"
+      },
+      "10:00": {
+        "title": "How to rescue/recover a project - and how developers can support that",
+        "speaker": "Thommy Mewes",
+        "description": "",
+        "duration": "30",
+        "id": "ee4ba15c"
+      },
+      "10:30": {
+        "title": "Back to the future",
+        "speaker": "Lill Reyes",
+        "description": "",
+        "duration": "15",
+        "id": "729deeec"
+      },
+      "10:45": {
+        "title": "Break",
+        "speaker": "",
+        "description": "",
+        "duration": "15",
+        "id": "f9949156"
+      },
+      "12:00": {
+        "title": "Lunch",
+        "speaker": "",
+        "description": "",
+        "duration": "60",
+        "id": "cd6ccf5f"
+      },
+      "18:00": {
+        "title": "Dinner at Grilleriet",
+        "speaker": "",
+        "description": "",
+        "duration": "∞",
+        "id": "450715ad"
+      }
+    },
+    "room": ""
+  },
+  "1": {
+    "program": {
+      "11:00": {
+        "title": "AngularJS",
+        "speaker": "Alexander Perry & Svein-Helge Grinden",
+        "description": "",
+        "duration": "45",
+        "language": "nb_NO",
+        "id": "19c10503"
+      },
+      "11:45": {
+        "title": "Arduino",
+        "speaker": "Kyrre Havik Eriksen",
+        "description": "",
+        "duration": "15",
+        "id": "3241c7d1"
+      },
+      "13:00": {
+        "title": "Flytoget - smidig utvikling i 210 km/t",
+        "speaker": "Lise Bulling & Karine Småstuen",
+        "description": "",
+        "duration": "45",
+        "language": "nb_NO",
+        "id": "e0b36fd4"
+      },
+      "13:45": {
+        "title": "Hybris",
+        "speaker": "Michael Johansen",
+        "description": "",
+        "duration": "15",
+        "id": "fbf09424"
+      }
+    },
+    "room": "Sal D"
+  },
+  "2": {
+    "program": {
+      "": {
+        "title": "",
+        "speaker": "",
+        "description": "",
+        "duration": "",
+        "id": "8baefd2e"
+      }
+    },
+    "room": ""
+  }
+}

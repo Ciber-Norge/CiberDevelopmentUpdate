@@ -1,0 +1,26 @@
+%div.track-spot{:style => "background: #eee;"}
+  .toggleDescription
+    %span.label.label-info.pull-right
+      =key
+    %h4{:style => "margin-bottom: 0px;"}
+      =value["title"]
+    %span.speaker
+      #{value["speaker"]}
+    - if value.has_key?("room") then
+      %br
+      = "Rom: #{value["room"]}"
+  .slideDescription
+    It's my term for my time of the month. Oh. What time of the month? The weekend? You know, it's high tide. But we're not on the coast. I'm closed for maintenance! Closed for maintenance? I've fallen to the communists! Well, they do have some strong arguments.
+
+  #rating
+    RateIt:
+    .rateit{"data-spotid" => value["id"], "data-rateit-resetable" => "false", "data-rateit-step" => "1", "data-rateit-value" => get_rating_for!(value["id"])}
+  .toggleComment
+    Kommenter:
+  .slideComment
+    %form.form-inline{:action => "/track/#{params["id"]}/#{value["id"]}", :method => "post", :role => "form"}
+      %textarea{:name => "kommentar", :style => "width: 90%;", :placeholder => "Skriv inn en kommentar"}
+      .form-group
+        %label.sr-only{:for => "navn"} Navn
+        %input#navn.form-control{:name => "navn", :placeholder => "Navn", :style => "display: inline-block; margin-bottom: 0px; vertical-align: middle; width: auto;"}
+        %button.btn.btn-default{:type => "submit"} Send
