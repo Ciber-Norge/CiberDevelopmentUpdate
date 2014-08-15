@@ -9,5 +9,5 @@
     = haml :"templates/nav"
     .container
       = haml :"templates/stats_nav"
-      = get_suggestions.each do | key, suggestion |
-        =haml :"templates/comment", :locals => {:key => key, :value => suggestion}
+      - get_suggestions.each do | key, suggestion |
+        =haml :"templates/suggestion", :locals => {:key => key, :value => suggestion}

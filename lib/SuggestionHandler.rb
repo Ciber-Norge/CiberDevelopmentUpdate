@@ -1,13 +1,11 @@
 def save_suggestion(title, description, format, track, responsible)
-	{
-      SecureRandom.hex(2) => {
+  get_suggestions[SecureRandom.hex(2)] = {
           'title' => title,
           'description' => description,
           'format' => format,
           'track' => track,
           'responsible' => responsible
       }
-  }
 end
 
 def delete_suggesion(id)

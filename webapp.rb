@@ -33,7 +33,7 @@ scheduler = Rufus::Scheduler.new
 scheduler.every '5m' do
   puts Time.now
   puts 'Saving to file'
-  #save_data
+  save_data
 end
 
 begin
@@ -118,6 +118,10 @@ get '/cfp' do
 end
 
 post '/cfp' do
-  save_suggestion(params['title'], params['description'], params['format'], params['track'], params['responsible'])
+	if params['title'] == "" || params['description'] == "" || params['responsible'] == "" then
+		redirect '/cfp'
+	end
+
+	save_suggestion(params['title'], params['description'], params['format'], params['track'], params['responsible'])
 	haml :thankyou
 end
