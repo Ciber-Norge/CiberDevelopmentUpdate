@@ -125,3 +125,9 @@ post '/cfp' do
 	save_suggestion(params['title'], params['description'], params['format'], params['track'], params['responsible'])
 	haml :thankyou
 end
+
+# Errors
+not_found do
+	status 404
+	haml :oops
+end

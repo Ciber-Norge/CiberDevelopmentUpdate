@@ -8,15 +8,17 @@
   %body
     = haml :"templates/nav"
     .container
-      = haml :"templates/stats_nav"
-      Gjennomsnitt per foredrag:
-      - data = {}
-      - get_data.keys.each do | id |
-        - data[get_spot_name(id)] = get_average_of_votes_for(id)
-      = column_chart(data, max: 6)
-      %br
-      Antall stemmer per foredrag
-      - data = {}
-      - get_data.keys.each do | id |
-        - data[get_spot_name(id)] = get_number_of_votes_for(id)
-      = column_chart(data)
+      .row
+        = haml :"templates/stats_nav"
+      .row
+        Gjennomsnitt per foredrag:
+        - data = {}
+        - get_data.keys.each do | id |
+          - data[get_spot_name(id)] = get_average_of_votes_for(id)
+        = column_chart(data, max: 6)
+        %br
+        Antall stemmer per foredrag
+        - data = {}
+        - get_data.keys.each do | id |
+          - data[get_spot_name(id)] = get_number_of_votes_for(id)
+        = column_chart(data)

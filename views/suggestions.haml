@@ -8,6 +8,8 @@
   %body
     = haml :"templates/nav"
     .container
-      = haml :"templates/stats_nav"
-      - get_suggestions.each do | key, suggestion |
-        =haml :"templates/suggestion", :locals => {:key => key, :value => suggestion}
+      .row
+        = haml :"templates/stats_nav"
+      .row
+        - get_suggestions.each do | key, suggestion |
+          =haml :"templates/suggestion", :locals => {:key => key, :value => suggestion}
