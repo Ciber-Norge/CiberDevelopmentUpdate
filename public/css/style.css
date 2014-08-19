@@ -81,6 +81,11 @@ a:active.no-underline {
 	border-left: 5px solid #B3DB11;
 	padding-left: 5px;
 }
+.suggestion {
+	border-left: 5px solid #B3DB11;
+	padding-left: 5px;
+	padding-right: 5px;
+}
 
 .padding {
 	padding-bottom: 10px;
@@ -96,7 +101,6 @@ a:active.no-underline {
 	position: relative
 }
 #carousel {
-	background: silver;
 	overflow: hidden;
 	width: 100%;
 	-webkit-backface-visibility: hidden;
@@ -139,19 +143,4 @@ a:active.no-underline {
 	left: 0;
 	width: 100%;
 	text-shadow: -1px -1px 0 rgba(0, 0, 0, .2)
-}
-#carousel li.pane1 {
-	background: #42d692
-}
-#carousel li.pane2 {
-	background: #4986e7
-}
-#carousel li.pane3 {
-	background: #d06b64
-}
-#carousel li.pane4 {
-	background: #cd74e6
-}
-#carousel li.pane5 {
-	background: #9fe1e7
 }

@@ -2,40 +2,12 @@
 %html
   %head
     %title
-      Hammer.js
-    -#%link{:href => "http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css", :rel => "stylesheet"}
+      Ciber Developer Update - Program
     = haml :"templates/header_imports"
-    %meta{:content => "user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1", :name => "viewport"}
-    :css
-      html, body {
-        min-height: 100%;
-        height: 100%;
-        padding: 0;
-        margin: 0;
-        position: relative
-      }
-  %body
-    = haml :"templates/nav"
-    #carousel
-      %ul
-        %li.pane1
-          Track Felles |
-          - get_track("Felles")["program"].each do | key, value |
-            =haml :"templates/track_spot", :locals => {:key => key, :value => value}
-        %li.pane2
-          Track 1 | 
-          - get_track("1")["program"].each do | key, value |
-            =haml :"templates/track_spot", :locals => {:key => key, :value => value}
-        %li.pane3
-          Track 2 | 
-          - get_track("2")["program"].each do | key, value |
-            =haml :"templates/track_spot", :locals => {:key => key, :value => value}
-        %li.pane4
-        %li.pane5
-          %h2 Dit is het einde!
-
     :javascript
       $(document).ready(function() {
+        #{get_file('public/js/rateit_module.js')}
+
         $(".toggleDescription").click(function() {
           $(this).nextAll('.slideDescription').first().slideToggle();
         });
@@ -43,8 +15,23 @@
           $(this).nextAll('.slideComment').first().slideToggle();
         });
       });
-    / jQuery is just for the demo! Hammer.js works without jQuery :-)
-    %script{:src => "//code.jquery.com/jquery-1.11.0.min.js"}
+  %body
+    = haml :"templates/nav"
+    .container
+      #carousel
+        %ul
+          %li.pane1
+            Track Felles |
+            - get_track("Felles")["program"].each do | key, value |
+              =haml :"templates/track_spot", :locals => {:key => key, :value => value, :params => { "id" => "Felles"} }
+          %li.pane2
+            Track 1 | 
+            - get_track("1")["program"].each do | key, value |
+              =haml :"templates/track_spot", :locals => {:key => key, :value => value, :params => { "id" => "1"}}
+          %li.pane3
+            Track 2 | 
+            - get_track("2")["program"].each do | key, value |
+              =haml :"templates/track_spot", :locals => {:key => key, :value => value, :params => { "id" => "2"}}
     %script{:src => "/js/modernizr.js"}
     %script{:src => "/js/hammer.min.js"}
     :javascript
@@ -128,7 +115,7 @@
 
           function handleHammer(ev) {
               // disable browser scrolling
-              ev.gesture.preventDefault();
+              // ev.gesture.preventDefault();
 
               switch(ev.type) {
                   case 'dragright':

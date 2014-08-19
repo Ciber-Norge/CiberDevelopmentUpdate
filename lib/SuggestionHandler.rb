@@ -8,7 +8,7 @@ def save_suggestion(title, description, format, track, responsible)
       }
 end
 
-def delete_suggesion(id)
+def delete_suggestion(id)
 	get_suggestions.delete(id)
 end
 

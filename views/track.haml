@@ -15,13 +15,13 @@
       - params['program'].each do | key, value |
         = haml :'templates/track_spot', :locals => {:key => key, :value => value}
 
-:javascript
-  $(document).ready(function() {
-    $(".toggleDescription").click(function() {
-      $(this).nextAll('.slideDescription').first().slideToggle();
-    });
-    $(".toggleComment").click(function() {
-      $(this).nextAll('.slideComment').first().slideToggle();
-    });
-    var element = document.getElementById('test_el');
-  });
+    :javascript
+      $(document).ready(function() {
+        $(".toggleDescription").click(function() {
+          $(this).nextAll('.slideDescription').first().slideToggle();
+        });
+        $(".toggleComment").click(function() {
+          $(this).nextAll('.slideComment').first().slideToggle();
+        });
+        var element = document.getElementById('test_el');
+      });

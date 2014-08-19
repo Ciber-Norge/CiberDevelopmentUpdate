@@ -83,6 +83,7 @@ end
 
 # Ajax
 post '/ajax/rateit' do
+	p "hello"
 	id = params['id']
 	value = params['value']
 	ip = request.ip
@@ -110,6 +111,11 @@ end
 
 get '/stats/suggestions' do
 	haml :suggestions
+end
+
+get '/stats/suggestions/slett' do
+	delete_suggestion(params['id'])
+	redirect '/stats/suggestions'
 end
 
 # Call for Papers
