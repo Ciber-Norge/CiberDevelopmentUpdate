@@ -32,6 +32,7 @@
             Track 2 | 
             - get_track("2")["program"].each do | key, value |
               =haml :"templates/track_spot", :locals => {:key => key, :value => value, :params => { "id" => "2"}}
+    %%br
     %script{:src => "/js/modernizr.js"}
     %script{:src => "/js/hammer.min.js"}
     :javascript

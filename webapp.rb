@@ -5,6 +5,7 @@ require 'json'
 require 'securerandom'
 require 'chartkick'
 require 'rufus-scheduler'
+require 'rest_client'
 
 require_relative 'lib/SessionHandler.rb'
 require_relative 'lib/DataHandler.rb'
@@ -17,12 +18,16 @@ require_relative 'lib/SuggestionHandler'
 #Global variables
 $tracks = nil
 $rate = nil
+$DB = "#{ENV['CLOUDANT_URL_CDU']}"
 
 $commentsStorage = nil
+$commentsId = "8b8020e66fe6bc11836ac33940390839"
 $suggestionsStorage = nil
+$suggestionsId = "1a1e50e006fbaa94c2ae571170e35b0a"
 $dataStorage = nil
+$dataId = "8b8020e66fe6bc11836ac339403baeef"
 
-enable :sessions
+#enable :sessions
 use Rack::Session::Cookie, :secret => 'super_secret_key_that_should_be_set_in_a_env_variable'
 
 set :bind, '0.0.0.0'
@@ -33,14 +38,18 @@ scheduler = Rufus::Scheduler.new
 scheduler.every '5m' do
   puts Time.now
   puts 'Saving to file'
-  save_data
+  save_all_data
+end
+
+unless CLOUDANT_URL = ENV['CLOUDANT_URL']
+  raise "You must specify the CLOUDANT_URL env variable"
 end
 
 begin
 	load_tracks_from_json
-  load_suggestions_from_json
-  load_comments_from_json
-  load_data_from_json
+  	load_suggestions
+  	load_comments
+  	load_data
 end
 
 get '/' do
@@ -73,7 +82,7 @@ get '/update' do
 end
 
 get '/save' do
-  save_data
+  save_all_data
   redirect '/'
 end
 
@@ -83,7 +92,6 @@ end
 
 # Ajax
 post '/ajax/rateit' do
-	p "hello"
 	id = params['id']
 	value = params['value']
 	ip = request.ip

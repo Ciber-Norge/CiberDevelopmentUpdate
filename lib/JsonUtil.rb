@@ -22,33 +22,3 @@ def add_ids_to!(json)
 		end
 	end
 end
-
-def load_suggestions_from_json
-  $suggestionsStorage = JSON.parse(File.read('public/json/suggestions.json'))
-end
-
-def load_comments_from_json
-  $commentsStorage = JSON.parse(File.read('public/json/comments.json'))
-end
-
-def load_data_from_json
-  $dataStorage = JSON.parse(File.read('public/json/data.json'))
-end
-
-def save_comments_to_json
-  File.open('public/json/comments.json', 'w') do | file |
-    file.write(get_comments.to_json)
-  end
-end
-
-def save_suggestions_to_json
-  File.open('public/json/suggestions.json', 'w') do | file |
-    file.write(get_suggestions.to_json)
-  end
-end
-
-def save_data_to_json
-  File.open('public/json/data.json', 'w') do | file |
-    file.write(get_data.to_json)
-  end
-end

@@ -54,8 +54,52 @@ def get_spot_name(id)
     end
 end
 
+def save_all_data
+  save_comments
+  save_suggestions
+  save_data
+end
+
+def save_comments
+  jdata = JSON.parse(RestClient.get($DB + "/cdu2014/#{$commentsId}"))
+  jdata["comments"] = get_comments
+  save_to_cloudant(jdata.to_json)
+end
+
+def save_suggestions
+  jdata = JSON.parse(RestClient.get($DB + "/cdu2014/#{$suggestionsId}"))
+  jdata["suggestions"] = get_suggestions
+  save_to_cloudant(jdata.to_json)
+end
+
 def save_data
-  save_comments_to_json
-  save_suggestions_to_json
-  save_data_to_json
+  jdata = JSON.parse(RestClient.get($DB + "/cdu2014/#{$dataId}"))
+  jdata["data"] = get_data
+  save_to_cloudant(jdata.to_json)
+end
+
+def save_to_cloudant(json)
+  begin
+    @respons =  RestClient.post("#{$DB}/cdu2014/", json, {:content_type => :json, :accept => :json})
+    if @respons["ok"] then
+      p "OK"
+    else
+      # something bad :\
+    end
+  rescue => e
+    p e.response
+    # inform someone
+  end
+end
+
+def load_suggestions
+  $suggestionsStorage = JSON.parse(RestClient.get($DB + "/cdu2014/#{$suggestionsId}"))["suggestions"]
+end
+
+def load_comments
+  $commentsStorage = JSON.parse(RestClient.get($DB + "/cdu2014/#{$commentsId}"))["comments"]
+end
+
+def load_data
+  $dataStorage = JSON.parse(RestClient.get($DB + "/cdu2014/#{$dataId}"))["data"]
 end
