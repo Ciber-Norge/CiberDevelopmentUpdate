@@ -18,7 +18,7 @@ require_relative 'lib/SuggestionHandler'
 #Global variables
 $tracks = nil
 $rate = nil
-$DB = "#{ENV['CLOUDANT_URL_CDU']}"
+$DB = "#{ENV['CLOUDANT_URL']}"
 
 $commentsStorage = nil
 $commentsId = "8b8020e66fe6bc11836ac33940390839"
