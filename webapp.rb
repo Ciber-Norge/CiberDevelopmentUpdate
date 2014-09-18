@@ -18,7 +18,7 @@ require_relative 'lib/SuggestionHandler'
 #Global variables
 $tracks = nil
 $rate = nil
-$DB = "#{ENV['CLOUDANT_URL']}"
+$DB = "#{ENV['CLOUDANT_URL_CDU']}"
 
 $commentsStorage = nil
 $commentsId = "8b8020e66fe6bc11836ac33940390839"
@@ -41,7 +41,7 @@ scheduler.every '5m' do
   save_all_data
 end
 
-unless CLOUDANT_URL = ENV['CLOUDANT_URL']
+unless CLOUDANT_URL = ENV['CLOUDANT_URL_CDU']
   raise "You must specify the CLOUDANT_URL env variable"
 end
 
