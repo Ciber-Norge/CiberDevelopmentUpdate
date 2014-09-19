@@ -6,6 +6,9 @@ require 'securerandom'
 require 'chartkick'
 require 'rufus-scheduler'
 require 'rest_client'
+require 'viewpoint'
+
+include Viewpoint::EWS
 
 require_relative 'lib/SessionHandler.rb'
 require_relative 'lib/DataHandler.rb'
@@ -44,6 +47,24 @@ end
 unless CLOUDANT_URL = ENV['CLOUDANT_URL_CDU']
   raise "You must specify the CLOUDANT_URL env variable"
 end
+
+unless USERNAME = ENV['USERNAME']
+  raise "You must specify the USERNAME env variable"
+end
+
+unless PASSWORD = ENV['PASSWORD']
+  raise "You must specify the PASSWORD env variable"
+end
+
+unless ENDPOINT = ENV['ENDPOINT']
+  raise "You must specify the ENDPOINT env variable"
+end
+
+unless EMAIL = ENV['EMAIL']
+  raise "You must specify the EMAIL env variable"
+end  
+
+CLI = Viewpoint::EWSClient.new ENDPOINT, USERNAME, PASSWORD
 
 begin
 	load_tracks_from_json
@@ -136,7 +157,17 @@ post '/cfp' do
 		redirect '/cfp'
 	end
 
-	save_suggestion(params['title'], params['description'], params['format'], params['track'], params['responsible'])
+	suggestion = JSON.pretty_generate(save_suggestion(params['title'], params['description'], params['format'], params['track'], params['responsible']))
+
+	CLI.send_message do |m|
+		m.subject = "Nytt foredrag"
+	  	m.body    = "Forslag til foredrag mottatt\n\n#{suggestion}"
+	  	EMAIL.split(";").each do | recipient |
+	  		p recipient.gsub(/\s/,"")
+	  		m.to_recipients << recipient.gsub(/\s/,"")
+	  	end
+	end
+
 	haml :thankyou
 end
 
