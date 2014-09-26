@@ -2,8 +2,14 @@
 %html
   %head
     %title Ciber Development Update
+    -green = '#821CB4'
+    -purple = '#B3DB11'
     = haml :"templates/header_imports"
   %body
     = haml :"templates/nav"
     .container
       Tusen takk! Ditt bidrag har blitt mottatt.
+      %br
+      %a{:href => "/cfp/suggestions", :class => "no-underline"}
+        %div{:class => "col-lg-12 big-btn", :style => "background: #{green}; color: #{purple};"}
+          Se forslag

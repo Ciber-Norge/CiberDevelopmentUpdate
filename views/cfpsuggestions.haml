@@ -3,13 +3,11 @@
   %head
     %title Ciber Development Update
     = haml :"templates/header_imports"
-    -green = '#821CB4'
-    -purple = '#B3DB11'
   %body
     = haml :"templates/nav"
     .container
-      .row
-        = haml :"templates/stats_nav"
+      %h3
+        Forslag til CDU 2014
       .row
         - get_suggestions.each do | key, suggestion |
-          =haml :"templates/suggestion", :locals => {:key => key, :value => suggestion, :delete => true}
+          =haml :"templates/suggestion", :locals => {:key => key, :value => suggestion, :delete => false}

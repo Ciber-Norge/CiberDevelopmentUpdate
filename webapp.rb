@@ -171,6 +171,10 @@ post '/cfp' do
 	haml :thankyou
 end
 
+get '/cfp/suggestions' do
+	haml :cfpsuggestions
+end
+
 # Errors
 not_found do
 	status 404

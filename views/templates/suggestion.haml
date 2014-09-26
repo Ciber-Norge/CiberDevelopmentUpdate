@@ -1,15 +1,20 @@
-
 %div.suggestion{:style => "background: #eee;"}
-  %a{:href => "/stats/suggestions/slett?id=#{key}", :class => "pull-right"}
-    Slett
-  Tittel: #{value["title"]}
+  - if delete then
+    %a{:href => "/stats/suggestions/slett?id=#{key}", :class => "pull-right"}
+      Slett
+  %strong
+    #{value["title"]}
   %br
-  Beskrivelse: #{value["description"]}
+  #{value["description"]}
   %br
-  Format: #{value["format"]}
   %br
-  Track: #{value["track"]}
+  %strong Format:
+  #{value["format"]}
   %br
-  Ansvarlig: #{value["responsible"]}
+  %strong Track:
+  #{value["track"]}
+  %br
+  %strong Ansvarlig:
+  #{value["responsible"]}
   %br
 .padding
