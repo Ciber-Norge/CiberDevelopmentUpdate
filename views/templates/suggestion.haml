@@ -5,7 +5,7 @@
   %strong
     #{value["title"]}
   %br
-  #{value["description"]}
+  = value["description"].gsub(/\r\n/, "<br>")
   %br
   %br
   %strong Format:
