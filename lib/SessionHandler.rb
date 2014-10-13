@@ -111,7 +111,7 @@ def load_data
 end
 
 def load_tracks
-  $tracksStorage = JSON.parse(RestClient.get($DB + "/cdu2014/#{$tracksId}"))["data"]
+  $tracksStorage = JSON.parse(RestClient.get($DB + "/cdu2014/#{$tracksId}"))["tracks-2014"]
   add_ids_to!($tracksStorage)
   save_tracks
 end

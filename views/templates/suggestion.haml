@@ -1,6 +1,6 @@
 %div.suggestion{:style => "background: #eee;"}
   - if delete then
-    %a{:href => "/stats/suggestions/slett?id=#{key}", :class => "pull-right"}
+    %a{:href => "/stats/suggestions/delete?id=#{key}", :class => "pull-right"}
       Slett
   %strong
     #{value["title"]}

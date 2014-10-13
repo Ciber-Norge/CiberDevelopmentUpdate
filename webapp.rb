@@ -102,6 +102,9 @@ end
 get '/update' do
 	#load_tracks_from_json
 	load_tracks
+  	load_suggestions
+  	load_comments
+  	load_data
 	redirect '/'
 end
 
@@ -137,6 +140,11 @@ get '/stats/comments' do
 	haml :comments
 end
 
+get '/stats/comments/delete' do
+	delete_comment(params['id'], params['parent'])
+	redirect '/stats/comments'
+end
+
 get '/stats/presentation' do
 	haml :stats
 end
@@ -145,7 +153,7 @@ get '/stats/suggestions' do
 	haml :suggestions
 end
 
-get '/stats/suggestions/slett' do
+get '/stats/suggestions/delete' do
 	delete_suggestion(params['id'])
 	redirect '/stats/suggestions'
 end

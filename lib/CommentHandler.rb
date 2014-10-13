@@ -1,6 +1,7 @@
 def save_comment(id, name, message)
   comment = create_comment(id, name, message)
   get_comments_for(id).merge!(comment)
+  save_all_data
 end
 
 def create_comment(id, name, message)
@@ -13,8 +14,9 @@ def create_comment(id, name, message)
   }
 end
 
-def delete_comment(id)
-  get_comments.delete(id)
+def delete_comment(id, parent)
+  get_comments_for(parent).delete(id)
+  save_all_data
 end
 
 def get_comments_for(id)
