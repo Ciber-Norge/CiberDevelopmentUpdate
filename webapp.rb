@@ -19,7 +19,8 @@ require_relative 'lib/Extender.rb'
 require_relative 'lib/SuggestionHandler'
 
 #Global variables
-$tracks = nil
+$tracksStorage = nil
+$tracksId = "4fb7af13335a80eef9c77139ac426479"
 $rate = nil
 $DB = "#{ENV['CLOUDANT_URL_CDU']}"
 
@@ -67,7 +68,8 @@ end
 CLI = Viewpoint::EWSClient.new ENDPOINT, USERNAME, PASSWORD
 
 begin
-	load_tracks_from_json
+	#load_tracks_from_json
+	load_tracks
   	load_suggestions
   	load_comments
   	load_data
@@ -98,7 +100,8 @@ end
 
 # Admin
 get '/update' do
-	load_tracks_from_json
+	#load_tracks_from_json
+	load_tracks
 	redirect '/'
 end
 

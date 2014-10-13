@@ -1,13 +1,13 @@
 def load_tracks_from_json()
 	file = File.read('public/json/cdu-tracks-2014.json') # filename to env or something like that
-	$tracks = JSON.parse(file)
-	add_ids_to!($tracks)
+	$tracksStorage = JSON.parse(file)
+	add_ids_to!($tracksStorage)
 	save_tracks_to_json
 end
 
 def save_tracks_to_json()
 	File.open('public/json/cdu-tracks-2014.json', 'w') do | file |
-		file.write(JSON.pretty_generate($tracks))
+		file.write(JSON.pretty_generate($tracksStorage))
 	end
 end
 

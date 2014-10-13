@@ -12,13 +12,13 @@ def get_file(filename)
 end
 
 def get_track(id)
-	$tracks[id.to_s] || {}
+	$tracksStorage[id.to_s] || {}
 end
 
 def get_tracks_for_now()
 	now = Time.now
 	tracks_now = {}
-	$tracks.each do | track_id, track_value |
+	$tracksStorage.each do | track_id, track_value |
 		track_value["program"].each do | track_time, value |
 			if (something(now, track_time, value["duration"])) then
 				value["room"] = track_value["room"]
@@ -45,7 +45,7 @@ def something(now, track_time, duration)
 end
 
 def get_spot_name(id)
-	$tracks.each do | track, track_value |
+	$tracksStorage.each do | track, track_value |
     	track_value["program"].each do | program_id, value |
     		if value["id"] == id then
     			return value["title"]
@@ -78,6 +78,12 @@ def save_data
   save_to_cloudant(jdata.to_json)
 end
 
+def save_tracks
+  jdata = JSON.parse(RestClient.get($DB + "/cdu2014/#{$tracksId}"))
+  jdata["tracks-2014"] = $tracksStorage
+  save_to_cloudant(jdata.to_json)
+end
+
 def save_to_cloudant(json)
   begin
     @respons =  RestClient.post("#{$DB}/cdu2014/", json, {:content_type => :json, :accept => :json})
@@ -102,4 +108,10 @@ end
 
 def load_data
   $dataStorage = JSON.parse(RestClient.get($DB + "/cdu2014/#{$dataId}"))["data"]
+end
+
+def load_tracks
+  $tracksStorage = JSON.parse(RestClient.get($DB + "/cdu2014/#{$tracksId}"))["data"]
+  add_ids_to!($tracksStorage)
+  save_tracks
 end
