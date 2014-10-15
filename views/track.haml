@@ -13,15 +13,15 @@
       Track #{id} | #{params['room']}
       %br
       - params['program'].each do | key, value |
-        = haml :'templates/track_spot', :locals => {:key => key, :value => value}
+        = haml :'templates/track_spot', :locals => {:key => key, :value => value, :is_now => is_running_now(key, value["duration"])}
 
-    :javascript
-      $(document).ready(function() {
-        $(".toggleDescription").click(function() {
-          $(this).nextAll('.slideDescription').first().slideToggle();
-        });
-        $(".toggleComment").click(function() {
-          $(this).nextAll('.slideComment').first().slideToggle();
-        });
-        var element = document.getElementById('test_el');
-      });
+:javascript
+  $(document).ready(function() {
+    $(".toggleDescription").click(function() {
+      $(this).nextAll('.slideDescription').first().slideToggle();
+    });
+    $(".toggleComment").click(function() {
+      $(this).nextAll('.slideComment').first().slideToggle();
+    });
+    var element = document.getElementById('test_el');
+  });

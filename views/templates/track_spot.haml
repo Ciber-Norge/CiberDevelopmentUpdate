@@ -1,4 +1,8 @@
-%div.track-spot{:style => "background: #eee;"}
+- if is_now
+  - color = '#B3DB11'
+- else
+  - color = '#eee'
+%div.track-spot{:style => "background: #{color};"}
   .toggleDescription
     %span.label.label-info.pull-right
       =key
