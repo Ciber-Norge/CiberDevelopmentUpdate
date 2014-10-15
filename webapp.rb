@@ -39,9 +39,9 @@ set :server, :thin
 
 scheduler = Rufus::Scheduler.new
 
-scheduler.every '5m' do
+scheduler.every '10m' do
   puts Time.now
-  puts 'Saving to file'
+  puts 'Saving data'
   save_all_data
 end
 

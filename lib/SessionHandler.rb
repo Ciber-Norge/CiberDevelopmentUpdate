@@ -20,21 +20,22 @@ def get_tracks_for_now()
 	tracks_now = {}
 	$tracksStorage.each do | track_id, track_value |
 		track_value["program"].each do | track_time, value |
-			if (something(now, track_time, value["duration"])) then
+			if (is_track_running_now(now, track_time, value["duration"])) then
 				value["room"] = track_value["room"]
-				tracks_now[track_time] = value
+        value["time"] = track_time
+				tracks_now[track_id] = value
+        tracks_now["starts"] = track_time
 			end
 		end
 	end
 	tracks_now
 end
 
-# TODO Need better name!
-def something(now, track_time, duration)
+def is_track_running_now(now, track_time, duration)
 	t_a = track_time.split(/:/)
     end_hour = t_a[0].to_i
     end_minutes = t_a[1].to_i + duration.to_i
-    if end_minutes >= 60 then
+    while end_minutes >= 60 do
     	end_hour += 1
     	end_minutes -= 60
     end

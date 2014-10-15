@@ -29,7 +29,7 @@
         "title": "Ølbrygging i java - eller hvordan holde seg oppdatert når man jobber med utrangerte teknologier",
         "speaker": "Daniel Holmen",
         "description": "Noen ganger blir man sittende og jobbe med gamle, utrangerte, eller enkelt og greit kjedelige teknologier. Hvordan skal man klare å holde motivasjonen oppe for faglig oppdatering? Hvorfor ikke kombinere en hobby eller fritidsaktivitet med spennende teknologier? Du kan for eksempel lage deg et automatisert bryggeri med Java, Raspberry Pi, Arduino, og en haug av sensorer og andre dingser...",
-        "duration": "40",
+        "duration": "40"
       }
     },
     "room": ""
@@ -49,7 +49,7 @@
         "duration": "10"
       },
       "11:00": {
-        "title": "Impact Mapping kan hjelpe deg ut av kravjungelen! ",
+        "title": "Impact Mapping kan hjelpe deg ut av kravjungelen!",
         "speaker": "Thomas Almnes",
         "description": "Impact Mapping er en teknikk som lar deg knytte krav med målsetting. Ofte dukker det opp ønsker og krav om funksjonalitet som ikke kan identifiseres med prosjektets målsetting. Det er ikke alltid enkelt å gjøre riktige prioriteringer dersom man ikke kan plassere kravene i den rette konteksten. Impact mapping kan hjelpe deg ut av jungelen! Bonusen er at teknikken bidrar i å skrive bedre brukerhistorier :) ",
         "duration": "10"

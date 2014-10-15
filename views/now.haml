@@ -10,8 +10,15 @@
   %body
     = haml :"templates/nav"
     .container
+      - if params.has_key?("starts")
+        Startet #{params["starts"]}
+        %br
       - params.each do | key, value |
-        = haml :"templates/track_spot", :locals => {:key => key, :value => value}
+        - if key != "starts"
+          %h3
+            Track #{key}
+          - key = value["time"]
+          = haml :"templates/track_spot", :locals => {:key => key, :value => value}
 
 :javascript
   $(document).ready(function() {

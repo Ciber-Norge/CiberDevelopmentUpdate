@@ -15,7 +15,9 @@ def create_comment(id, name, message)
 end
 
 def delete_comment(id, parent)
-  get_comments_for(parent).delete(id)
+  p id
+  p parent
+  p get_comments_for(parent).delete(id)
   save_all_data
 end
 
