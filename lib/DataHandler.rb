@@ -22,17 +22,16 @@ def init_rating_for!(id)
 	get_item_with!(id)["rating_count"] = 0
 end
 
-def have_voted?(id, ip)
-	get_ip_for!(id).include? ip
-	false
+def have_voted?(id, sessionId)
+	get_sessionId_for!(id).include? sessionId
 end
 
-def add_ip_to!(id, ip)
-	get_data[id.to_s]["ip"] << ip
+def add_sessionId_to!(id, sessionId)
+	get_data[id.to_s]["sessionId"] << sessionId
 end
 
-def get_ip_for!(id)
-	get_item_with!(id)["ip"] || get_item_with!(id)["ip"] = []
+def get_sessionId_for!(id)
+	get_item_with!(id)["sessionId"] || get_item_with!(id)["sessionId"] = []
 end
 
 def get_item_with!(id)

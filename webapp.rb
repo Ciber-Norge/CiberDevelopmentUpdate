@@ -31,7 +31,6 @@ $suggestionsId = "1a1e50e006fbaa94c2ae571170e35b0a"
 $dataStorage = nil
 $dataId = "8b8020e66fe6bc11836ac339403baeef"
 
-#enable :sessions
 use Rack::Session::Cookie, :secret => 'super_secret_key_that_should_be_set_in_a_env_variable'
 
 set :bind, '0.0.0.0'
@@ -75,6 +74,10 @@ begin
   	load_data
 end
 
+before do
+  	session[:init] = true
+end
+
 get '/' do
 	haml :index
 end
@@ -100,7 +103,6 @@ end
 
 # Admin
 get '/update' do
-	#load_tracks_from_json
 	load_tracks
   	load_suggestions
   	load_comments
@@ -121,9 +123,9 @@ end
 post '/ajax/rateit' do
 	id = params['id']
 	value = params['value']
-	ip = request.ip
-	unless have_voted?(id, ip) and is_integer?(value) then
-		add_ip_to!(id, ip)
+	sessionId = session[:session_id]
+	unless have_voted?(id, sessionId) and is_integer?(value) then
+		add_sessionId_to!(id, sessionId)
 		inc_rating_with!(value, id)
 		JSON.generate({'id' => id, 'value' => get_rating_for!(id)})
 	else
