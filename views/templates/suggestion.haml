@@ -1,7 +1,7 @@
 %div.suggestion{:style => "background: #eee;"}
   - if delete then
     %a{:href => "/stats/suggestions/delete?id=#{key}", :class => "pull-right"}
-      Slett
+      Delete
   %strong
     #{value["title"]}
   %br
@@ -14,7 +14,7 @@
   %strong Track:
   #{value["track"]}
   %br
-  %strong Ansvarlig:
+  %strong Responsible:
   #{value["responsible"]}
   %br
 .padding

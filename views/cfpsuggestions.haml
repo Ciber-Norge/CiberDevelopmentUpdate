@@ -7,7 +7,7 @@
     = haml :"templates/nav"
     .container
       %h3
-        Forslag til CDU 2014
+        Suggestion for CDU 2015 Spring Edition
       .row
         - get_suggestions.each do | key, suggestion |
           =haml :"templates/suggestion", :locals => {:key => key, :value => suggestion, :delete => false}

@@ -4,7 +4,6 @@ require 'haml'
 require 'json'
 require 'securerandom'
 require 'chartkick'
-require 'rufus-scheduler'
 require 'rest_client'
 require 'viewpoint'
 
@@ -20,16 +19,16 @@ require_relative 'lib/SuggestionHandler'
 
 #Global variables
 $tracksStorage = nil
-$tracksId = "4fb7af13335a80eef9c77139ac426479"
+$tracksId = "c2f1cd33f59799c8173f441c749f05f3" #"4fb7af13335a80eef9c77139ac426479"
 $rate = nil
 $DB = "#{ENV['CLOUDANT_URL_CDU']}"
 
 $commentsStorage = nil
-$commentsId = "8b8020e66fe6bc11836ac33940390839"
+$commentsId = "eeab19cf5f204425dc997eae6b5a687d" #"8b8020e66fe6bc11836ac33940390839"
 $suggestionsStorage = nil
-$suggestionsId = "1a1e50e006fbaa94c2ae571170e35b0a"
+$suggestionsId = "eb9d723dccf29016e142ce4b5db1c604" #"1a1e50e006fbaa94c2ae571170e35b0a"
 $dataStorage = nil
-$dataId = "8b8020e66fe6bc11836ac339403baeef"
+$dataId = "eeab19cf5f204425dc997eae6b7a574b" #"8b8020e66fe6bc11836ac339403baeef"
 
 use Rack::Session::Cookie, :secret => 'super_secret_key_that_should_be_set_in_a_env_variable'
 
@@ -59,7 +58,6 @@ end
 CLI = Viewpoint::EWSClient.new ENDPOINT, USERNAME, PASSWORD
 
 begin
-	#load_tracks_from_json
 	load_tracks
   	load_suggestions
   	load_comments

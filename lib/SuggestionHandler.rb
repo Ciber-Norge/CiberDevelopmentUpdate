@@ -1,12 +1,14 @@
 def save_suggestion(title, description, format, track, responsible)
-  get_suggestions[SecureRandom.hex(2)] = {
+  id = SecureRandom.hex(2)
+  get_suggestions[id] = {
           'title' => title,
           'description' => description,
           'format' => format,
           'track' => track,
           'responsible' => responsible
       }
-  save_all_data
+  save_suggestions
+  get_suggestions[id]
 end
 
 def delete_suggestion(id)
