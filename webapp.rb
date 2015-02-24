@@ -161,16 +161,6 @@ post '/cfp' do
 	end
 
 	suggestion = JSON.pretty_generate(save_suggestion(params['title'], params['description'], params['format'], params['track'], params['responsible']))
-
-	CLI.send_message do |m|
-		m.subject = "Nytt foredrag"
-	  	m.body    = "Forslag til foredrag mottatt\n\n#{suggestion}"
-	  	EMAIL.split(";").each do | recipient |
-	  		p recipient.gsub(/\s/,"")
-	  		m.to_recipients << recipient.gsub(/\s/,"")
-	  	end
-	end
-
 	haml :thankyou
 end
 
