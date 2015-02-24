@@ -1,16 +1,3 @@
-def load_tracks_from_json()
-	file = File.read('public/json/cdu-tracks-2014.json') # filename to env or something like that
-	$tracksStorage = JSON.parse(file)
-	add_ids_to!($tracksStorage)
-	save_tracks_to_json
-end
-
-def save_tracks_to_json()
-	File.open('public/json/cdu-tracks-2014.json', 'w') do | file |
-		file.write(JSON.pretty_generate($tracksStorage))
-	end
-end
-
 def add_ids_to!(json)
 	json.each do | key, value |
 		if value.key?('program') then

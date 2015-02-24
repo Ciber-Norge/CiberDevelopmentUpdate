@@ -36,14 +36,6 @@ use Rack::Session::Cookie, :secret => 'super_secret_key_that_should_be_set_in_a_
 set :bind, '0.0.0.0'
 set :server, :thin
 
-scheduler = Rufus::Scheduler.new
-
-scheduler.every '10m' do
-  puts Time.now
-  puts 'Saving data'
-  save_all_data
-end
-
 unless CLOUDANT_URL = ENV['CLOUDANT_URL_CDU']
   raise "You must specify the CLOUDANT_URL env variable"
 end
