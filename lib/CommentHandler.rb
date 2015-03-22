@@ -6,11 +6,11 @@ end
 
 def create_comment(id, name, message)
   {
-      SecureRandom.hex(2) => {
-          'id' => id,
-          'name' => name,
-          'message' => message
-      }
+    SecureRandom.hex(2) => {
+      'id' => id,
+      'name' => name,
+      'message' => message
+    }
   }
 end
 
