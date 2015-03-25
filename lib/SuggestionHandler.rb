@@ -12,8 +12,7 @@ def save_suggestion(title, description, format, track, responsible)
 end
 
 def delete_suggestion(id)
-  get_suggestions.delete(id)
-  save_all_data
+  get_suggestions.delete(id) && save_all_data
 end
 
 def get_suggestion_for(id)
