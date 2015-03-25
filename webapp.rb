@@ -6,13 +6,14 @@ require 'securerandom'
 require 'chartkick'
 require 'rest_client'
 
+require_relative 'lib/DatabaseHandler.rb'
 require_relative 'lib/SessionHandler.rb'
 require_relative 'lib/DataHandler.rb'
 require_relative 'lib/StatsHandler.rb'
 require_relative 'lib/CommentHandler.rb'
 require_relative 'lib/JsonUtil.rb'
 require_relative 'lib/Extender.rb'
-require_relative 'lib/SuggestionHandler'
+require_relative 'lib/SuggestionHandler.rb'
 
 #Global variables
 $tracksStorage = nil
@@ -139,7 +140,7 @@ post '/cfp' do
     redirect '/cfp'
   end
 
-  suggestion = JSON.pretty_generate(save_suggestion(params['title'], params['description'], params['format'], params['track'], params['responsible']))
+  save_suggestion params['title'], params['description'], params['format'], params['track'], params['responsible']
   haml :thankyou
 end
 
