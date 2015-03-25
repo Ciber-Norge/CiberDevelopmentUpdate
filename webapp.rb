@@ -5,9 +5,6 @@ require 'json'
 require 'securerandom'
 require 'chartkick'
 require 'rest_client'
-require 'viewpoint'
-
-include Viewpoint::EWS
 
 require_relative 'lib/SessionHandler.rb'
 require_relative 'lib/DataHandler.rb'
@@ -38,24 +35,6 @@ set :server, :thin
 unless CLOUDANT_URL = ENV['CLOUDANT_URL_CDU']
   raise "You must specify the CLOUDANT_URL env variable"
 end
-
-unless USERNAME = ENV['USERNAME']
-  raise "You must specify the USERNAME env variable"
-end
-
-unless PASSWORD = ENV['PASSWORD']
-  raise "You must specify the PASSWORD env variable"
-end
-
-unless ENDPOINT = ENV['ENDPOINT']
-  raise "You must specify the ENDPOINT env variable"
-end
-
-unless EMAIL = ENV['EMAIL']
-  raise "You must specify the EMAIL env variable"
-end  
-
-CLI = Viewpoint::EWSClient.new ENDPOINT, USERNAME, PASSWORD
 
 begin
   load_tracks
