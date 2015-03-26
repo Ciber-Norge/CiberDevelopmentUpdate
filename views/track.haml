@@ -12,8 +12,9 @@
     .container
       Track #{track} | #{params['room']}
       %br
-      - params['program'].each do | key, value |
-        = haml :'templates/track_spot', :locals => {:key => key, :value => value, :is_now => is_running_now(key, value["duration"])}
+      - if params.has_key? 'program'
+        - params['program'].each do | key, value |
+          = haml :'templates/track_spot', :locals => {:key => key, :value => value, :is_now => is_running_now(key, value["duration"])}
 
 :javascript
   $(document).ready(function() {

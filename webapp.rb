@@ -12,6 +12,7 @@ require_relative 'lib/RatingHandler.rb'
 require_relative 'lib/StatsHandler.rb'
 require_relative 'lib/CommentHandler.rb'
 require_relative 'lib/SuggestionHandler.rb'
+require_relative 'lib/TrackHandler.rb'
 
 #Global variables
 $tracksStorage = nil
@@ -53,7 +54,7 @@ get '/track/now' do
 end
 
 get '/track/:track' do | track |
-  haml :track, :locals => {:params => get_track(id), :track => track}
+  haml :track, :locals => {:params => get_track(track), :track => track}
 end
 
 post '/track/:track/:id' do | track, id |
