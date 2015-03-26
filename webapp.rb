@@ -8,11 +8,9 @@ require 'rest_client'
 
 require_relative 'lib/DatabaseHandler.rb'
 require_relative 'lib/SessionHandler.rb'
-require_relative 'lib/DataHandler.rb'
+require_relative 'lib/RatingHandler.rb'
 require_relative 'lib/StatsHandler.rb'
 require_relative 'lib/CommentHandler.rb'
-require_relative 'lib/JsonUtil.rb'
-require_relative 'lib/Extender.rb'
 require_relative 'lib/SuggestionHandler.rb'
 
 #Global variables
@@ -88,7 +86,7 @@ post '/ajax/rateit' do
   id = params['id']
   value = params['value']
   sessionId = session[:session_id]
-  unless have_voted?(id, sessionId) and is_integer?(value) then
+  unless have_rated?(id, sessionId) and is_integer?(value) then
     add_sessionId_to!(id, sessionId)
     inc_rating_with!(value, id)
     JSON.generate({'id' => id, 'value' => get_rating_for!(id)})

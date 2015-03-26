@@ -50,6 +50,19 @@ def load_data
   $dataStorage = JSON.parse(RestClient.get("#{CLOUDANT_URL}/#{$EVENT_URL}/#{$dataId}"))["data"]
 end
 
+private
+def add_ids_to!(json)
+  json.each do | key, value |
+    if value.key? 'program'
+      value['program'].each do | inner_key, inner_value |
+        unless inner_value.key? 'id'
+          inner_value['id'] = SecureRandom.hex(4)
+        end
+      end
+    end
+  end
+end
+
 def load_tracks
   $tracksStorage = JSON.parse(RestClient.get("#{CLOUDANT_URL}/#{$EVENT_URL}/#{$tracksId}"))["tracks"]
   add_ids_to!($tracksStorage)
