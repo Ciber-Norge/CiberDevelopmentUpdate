@@ -22,7 +22,7 @@
   .toggleComment
     Kommenter:
   .slideComment
-    %form.form-inline{:action => "/track/#{params["id"]}/#{value["id"]}", :method => "post", :role => "form"}
+    %form.form-inline{:action => "/track/#{params['track']}/#{value["id"]}", :method => "post", :role => "form"}
       %textarea{:name => "kommentar", :style => "width: 90%;", :placeholder => "Skriv inn en kommentar"}
       .form-group
         %label.sr-only{:for => "navn"} Navn

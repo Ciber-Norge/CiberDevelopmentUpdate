@@ -10,7 +10,7 @@
   %body#test_el
     = haml :'templates/nav'
     .container
-      Track #{id} | #{params['room']}
+      Track #{track} | #{params['room']}
       %br
       - params['program'].each do | key, value |
         = haml :'templates/track_spot', :locals => {:key => key, :value => value, :is_now => is_running_now(key, value["duration"])}
@@ -23,5 +23,4 @@
     $(".toggleComment").click(function() {
       $(this).nextAll('.slideComment').first().slideToggle();
     });
-    var element = document.getElementById('test_el');
   });

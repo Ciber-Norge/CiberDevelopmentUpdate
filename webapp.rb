@@ -19,7 +19,6 @@ require_relative 'lib/SuggestionHandler.rb'
 $tracksStorage = nil
 $tracksId = "c2f1cd33f59799c8173f441c749f05f3"
 $rate = nil
-$DB = "#{ENV['CLOUDANT_URL_CDU']}"
 
 $commentsStorage = nil
 $commentsId = "eeab19cf5f204425dc997eae6b5a687d"
@@ -54,21 +53,16 @@ end
 
 # Tracks
 get '/track/now' do
-  params['id'] = 'now'
-  haml :now, :locals => {:params => get_tracks_for_now}
+  haml :now, :locals => {:params => get_tracks_for_now, :track => 'now'}
 end
 
-get '/track/:id' do | id |
-  haml :track, :locals => {:params => get_track(id), :id => id}
+get '/track/:track' do | track |
+  haml :track, :locals => {:params => get_track(id), :track => track}
 end
 
 post '/track/:track/:id' do | track, id |
   save_comment(params['id'], params['navn'], params['kommentar'])
   redirect '/track/' + track
-end
-
-get '/track/:id/:detail' do | id, details |
-  haml :detail
 end
 
 # Admin

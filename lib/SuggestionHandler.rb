@@ -8,7 +8,6 @@ def save_suggestion(title, description, format, track, responsible)
     'responsible' => responsible
   }
   save_suggestions
-  get_suggestions[id]
 end
 
 def delete_suggestion(id)
