@@ -16,8 +16,6 @@ require_relative 'lib/SuggestionHandler.rb'
 #Global variables
 $tracksStorage = nil
 $tracksId = "c2f1cd33f59799c8173f441c749f05f3"
-$rate = nil
-
 $commentsStorage = nil
 $commentsId = "eeab19cf5f204425dc997eae6b5a687d"
 $suggestionsStorage = nil
@@ -30,7 +28,7 @@ use Rack::Session::Cookie, :secret => 'super_secret_key_that_should_be_set_in_a_
 set :bind, '0.0.0.0'
 set :server, :thin
 
-unless CLOUDANT_URL = ENV['CLOUDANT_URL_CDU']
+unless CLOUDANT_URL = ENV['CLOUDANT_URL']
   raise "You must specify the CLOUDANT_URL env variable"
 end
 
