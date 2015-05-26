@@ -145,6 +145,11 @@ get '/api/talks' do
   $tracksStorage.to_json
 end
 
+get '/api/talks/:cdu' do | cdu |
+  content_type :json, 'charset' => 'utf-8'
+  JSON.parse(RestClient.get("#{CLOUDANT_URL}/#{$EVENT_URL}/#{$tracksId}"))[cdu].to_json
+end
+
 # Errors
 not_found do
   status 404
