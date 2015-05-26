@@ -139,6 +139,12 @@ get '/cfp/suggestions' do
   haml :cfpsuggestions
 end
 
+# Api
+get '/api/talks' do
+  content_type :json, 'charset' => 'utf-8'
+  $tracksStorage.to_json
+end
+
 # Errors
 not_found do
   status 404
