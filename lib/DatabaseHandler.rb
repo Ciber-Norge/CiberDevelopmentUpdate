@@ -20,7 +20,7 @@ end
 
 def save_tracks
   jdata = JSON.parse(RestClient.get("#{CLOUDANT_URL}/#{$EVENT_URL}/#{$tracksId}"))
-  jdata["tracks-2014"] = $tracksStorage
+  jdata['tracks'] = $tracksStorage
   save_to_cloudant(jdata.to_json)
 end
 

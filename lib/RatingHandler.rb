@@ -1,3 +1,9 @@
+class Array
+  def sum
+    self.inject{|sum,x| sum + x }
+  end
+end
+
 def get_rating_for!(id)
   if get_item_with!(id)["rating"].nil?
     init_rating_for!(id)
