@@ -150,6 +150,16 @@ get '/api/talks/:cdu' do | cdu |
   JSON.parse(RestClient.get("#{CLOUDANT_URL}/#{$EVENT_URL}/#{$tracksId}"))[cdu].to_json
 end
 
+get '/api/rating/:cdu' do | cdu |
+  content_type :json, 'charset' => 'utf-8'
+  JSON.parse(RestClient.get("#{CLOUDANT_URL}/#{$EVENT_URL}/#{$dataId}"))['data'][cdu].to_json
+end
+
+get '/api/suggestions/:cdu' do | cdu |
+  content_type :json, 'charset' => 'utf-8'
+  JSON.parse(RestClient.get("#{CLOUDANT_URL}/#{$EVENT_URL}/#{$suggestionsId}"))['suggestions'][cdu].to_json
+end
+
 # Errors
 not_found do
   status 404
