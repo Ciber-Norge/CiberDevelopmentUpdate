@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %title
+      = t.title
+    = haml :"templates/header_imports"
+    -green = '#821CB4'
+    -purple = '#B3DB11'
+  %body
+    #layout
+      = haml :"track/nav"
+      #main
+        .content
+          = t.main.content
+          %br
+          - @tracks.each do | track |
+            %a{:href => "/track/#{track.title}", :class => "no-underline"}
+              %div{:class => "col-lg-12 big-btn", :style => "background: #{green}; color: #{purple};"}
+                = track.title
+          %a{:href => "/track/now", :class => "no-underline"}
+            %div{:class => "col-lg-12 big-btn", :style => "background: #{green}; color: #{purple};"}
+              Just nu

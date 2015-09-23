@@ -1,0 +1,59 @@
+!!!
+%html
+  %head
+    %title
+      = t.title
+    = haml :"templates/header_imports"
+  %body
+    #layout
+      = haml :"admin/nav"
+      #main
+        .content
+          %h3
+            Add a new event!
+
+          - if @errors
+            Errors:
+            %br
+            - @errors.each do | key, value |
+              = key
+              = value
+              %br
+
+          %form.pure-form.pure-form-stacked{:method => "post", :role => "form"}
+            %label{:for => "title"}
+              Title:
+            %input#title{:name => "event[title]", :type => "text"}
+
+            %label{:for => "start_date"}
+              Date:
+            %input#start_date{:name => "event[start_date]", :type => "date"}
+
+            %label{:for => "place"}
+              Place:
+            %input#place{:name => "event[place]", :type => "text"}
+
+            %label{:for => "description"}
+              Description:
+            %textarea#description{:name => "event[description]", :rows => "4"}
+
+            %label{:for => "cfp_description"}
+              Call for Paper description:
+            %textarea#cfp_description{:name => "event[cfp_description]", :rows => "4"}
+
+            %button.btn.btn-default{:type => "submit"}
+              Create event
+          .padding
+
+          %table.pure-table
+            %thead
+              %tr
+                %th Title
+                %th Date
+                %th Place
+            %tbody
+              - @events.each do | event |
+                %tr
+                  %th #{event.title}
+                  %th #{event.start_date}
+                  %th #{event.place}

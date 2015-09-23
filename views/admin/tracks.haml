@@ -1,0 +1,34 @@
+!!!
+%html
+  %head
+    %title
+      = t.title
+    = haml :"templates/header_imports"
+  %body
+    #layout
+      = haml :"admin/nav"
+      #main
+        .content
+          %h3
+            Add tracks
+
+          %form.pure-form.pure-form-stacked{:method => "post", :role => "form"}
+            %label{:for => "title"}
+              Track title:
+            %input#title{:name => "track[title]", :type => "text"}
+
+            %label{:for => "submit"}
+            %button.btn.btn-default{:type => "submit"}
+              Create track
+          .padding
+
+          %table.pure-table
+            %thead
+              %tr
+                %th Title
+                %th
+            %tbody
+              - @tracks.each do | track |
+                %tr
+                  %th #{track.title}
+                  %th Delete

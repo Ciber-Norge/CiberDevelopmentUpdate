@@ -1,0 +1,49 @@
+!!!
+%html
+  %head
+    %title Ciber Developer Update
+    = haml :"templates/header_imports"
+  %body
+    #layout
+      = haml :"admin/nav"
+      #main
+        .content
+          %h3
+            Suggestions for CDU 2015 Spring Edition
+          - if @suggestions.empty?
+            No suggestions yet
+
+          - @suggestions.each do | suggestion |
+            %div.suggestion{:style => "background: #eee;"}
+              %strong
+                = suggestion.title
+              %br
+              = suggestion.description.gsub(/\r\n/, "<br>")
+              %br
+              %br
+              %strong Format:
+              = suggestion.format
+              %br
+              %strong Track:
+              = suggestion.track
+              %br
+              %strong Speaker:
+              = suggestion.speaker
+              %br
+              %form.pure-form{:method => "post", :role => "form"}
+                %input{:name => "id", :value => suggestion.id, :type => "hidden"}
+                %label{:for => "track"}
+                  Pick track:
+                %select#track{:name => "track"}
+                  %option{:value => "no_value"} No track
+                  - @tracks.each do | track |
+                    %option{:value => track.title, :selected => track.title == suggestion.track}
+                      = track.title
+
+                %label{:for => "time"}
+                  Set time:
+                %input#time{:name => "time", :type => "time"}
+
+                %button.btn.btn-default{:name => "submit"}
+                  Add talk
+            .padding

@@ -1,0 +1,33 @@
+!!!
+%html
+  %head
+    %title
+      = t.title
+    = haml :"templates/header_imports"
+  %body
+    #layout
+      = haml :"admin/nav"
+      #main
+        %p
+          = t.admin.content
+
+        %form.pure-form.pure-form-stacked{:method => "post", :role => "form"}
+          %fieldset
+            .pure-control-group
+              %label{:for => "site_mode"}
+                = t.admin.form.site_mode
+              %select#site_mode{:name => "config[site_mode]", :style => "width: 100%;"}
+                %option{:value => "cfp", :selected => @configurations["site_mode"] == "cfp"} CFP mode
+                %option{:value => "track", :selected => @configurations["site_mode"] == "track"} Track mode
+
+            .pure-control-group
+              %label{:for => "event"}
+                = t.admin.form.event
+              %select#event{:name => "config[event]", :style => "width: 100%;"}
+                - @events.each do | event |
+                  %option{:value => event.id, :selected => @configurations["event"] == event.id.to_s}
+                    = event.title
+
+            .pure-control-group
+              %button.pure-button.pure-button-primay{:name => "submit"}
+                = t.admin.form.submit

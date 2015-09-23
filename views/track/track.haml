@@ -1,0 +1,53 @@
+!!!
+%html
+  %head
+    %title Ciber Developer Update
+    = haml :'templates/header_imports'
+  %body
+    #layout
+      = haml :'track/nav'
+      #main
+        .content
+          %h3
+            Track #{params["track"]}
+          - @talks.each do | talk |
+            - color = '#eee'
+            - if defined? is_now and is_now
+              - color = '#B3DB11'
+
+            %div.track-spot{:style => "background: #{color};"}
+              .toggleDescription
+                %span.label.label-info.pull-right
+                  = talk.time.strftime("%H:%M")
+                %h4{:style => "margin-bottom: 0px;"}
+                  = talk.title
+                %span.speaker
+                  = talk.speaker
+              .slideDescription
+                = talk.description
+
+              #rating
+                Rate
+                = surround '(', '):' do
+                  = "<span id=\"ratings\">#{talk.ratings.size}</span>"
+                .rateit{"data-spotid" => talk.id, "data-rateit-resetable" => "false", "data-rateit-step" => "1", "data-rateit-value" => talk.rating}
+              .toggleComment
+                Kommenter:
+              .slideComment
+                %form.pure-form{:action => "/comment/#{params["track"]}/#{talk.id}", :method => "post"}
+                  %textarea{:name => "comment[comment]", :style => "width: 90%;", :placeholder => "Skriv inn en kommentar", :rows => "2"}
+                  .form-group
+                    %label{:for => "author"} Navn
+                    %input#author{:name => "comment[author]", :placeholder => "Navn", :style => "display: inline-block; margin-bottom: 0px; vertical-align: middle; width: auto;"}
+                    %button.btn.btn-default{:type => "submit"} Send
+
+  :javascript
+    $(document).ready(function() {
+      #{File.read('public/js/rateit_module.js')}
+      $(".toggleDescription").click(function() {
+        $(this).nextAll('.slideDescription').first().slideToggle();
+      });
+      $(".toggleComment").click(function() {
+        $(this).nextAll('.slideComment').first().slideToggle();
+      });
+    });

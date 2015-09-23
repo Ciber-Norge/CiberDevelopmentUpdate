@@ -1,0 +1,25 @@
+/ Menu toggle
+%a#menuLink.menu-link{:href => "#menu"}
+  / Hamburger icon
+  %span
+#menu
+  .pure-menu
+    %ul.pure-menu-list
+      %li.pure-menu-item
+        %a.pure-menu-link{:href => "/"}
+          = t.admin.menu.home
+      %li.pure-menu-item
+        %a.pure-menu-link{:href => "/admin"}
+          = t.admin.menu.admin
+      %li.pure-menu-item
+        %a.pure-menu-link{:href => "/admin/events"}
+          = t.admin.menu.events
+      %li.pure-menu-item
+        %a.pure-menu-link{:href => "/admin/tracks"}
+          = t.admin.menu.tracks
+      %li.pure-menu-item
+        %a.pure-menu-link{:href => "/admin/suggestions"}
+          = t.admin.menu.suggestions
+      %li.pure-menu-item
+        %a.pure-menu-link{:href => "/admin/talks"}
+          = t.admin.menu.talks

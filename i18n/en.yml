@@ -1,0 +1,39 @@
+title: Ciber Development Update
+main:
+  content: Welcome to Ciber Development Update. Stay a while, and listen!
+
+admin:
+  content: Welcome to the admin panel
+  form:
+    site_mode: Site mode
+    event: Event
+    submit: Save
+  menu:
+    home: Home
+    admin: Admin
+    events: Events
+    tracks: Tracks
+    suggestions: Suggestions
+    talks: Talks
+
+cfp:
+  title: Call for Papers
+  content: CDU kicks off in the end of October! We are hoping for many great speaches! Of course, this depends on you. Call for Papers is open until Sunday, 18th of October and we encourage everyone to spend the time well and come up with something you can contribute with. Practice Managers and team leaders will also "remind" you, so that the message is not forgotten!<br />Submit your speach in the form below.
+  form:
+    title: Title
+    description: Description
+    format: Format
+    track: Track
+    speaker: Speaker
+  suggestions:
+    title: Suggestions for CDU
+    content: 
+    no-suggestions: There are no suggestions yet.
+  menu:
+    home: Home
+    cfp: Call for Papers
+    suggestions: See suggestions
+
+tracks:
+  menu:
+    home: Home

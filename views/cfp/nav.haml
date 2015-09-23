@@ -1,0 +1,16 @@
+/ Menu toggle
+%a#menuLink.menu-link{:href => "#menu"}
+  / Hamburger icon
+  %span
+#menu
+  .pure-menu
+    %ul.pure-menu-list
+      %li.pure-menu-item
+        %a.pure-menu-link{:href => "/"}
+          = t.cfp.menu.home
+      %li.pure-menu-item
+        %a.pure-menu-link{:href => "/cfp"}
+          = t.cfp.menu.cfp
+      %li.pure-menu-item
+        %a.pure-menu-link{:href => "/cfp/suggestions"}
+          = t.cfp.menu.suggestions

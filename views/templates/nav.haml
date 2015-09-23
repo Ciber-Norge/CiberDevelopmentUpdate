@@ -1,0 +1,17 @@
+/ Menu toggle
+%a#menuLink.menu-link{:href => "#menu"}
+  / Hamburger icon
+  %span
+#menu
+  .pure-menu
+    %ul.pure-menu-list
+      %li.pure-menu-item
+        %a.pure-menu-link{:href => "/"}
+          = t.tracks.menu.home
+      - @tracks.each do | track |
+        %li.pure-menu-item
+          %a.pure-menu-link{:href => "/tracks/#{track.title}"}
+            = track.title
+      %li
+        %a{:href => "/tracks/now"}
+          Now

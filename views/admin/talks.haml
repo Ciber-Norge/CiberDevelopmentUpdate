@@ -1,0 +1,34 @@
+!!!
+%html
+  %head
+    %title Ciber Developer Update
+    = haml :"templates/header_imports"
+  %body
+    #layout
+      = haml :"admin/nav"
+      #main
+        .content
+          %h3
+            Talks for CDU 2015 Spring Edition
+          - if @talks.empty?
+            No talks yet
+
+          - @talks.each do | talk |
+            %div.suggestion{:style => "background: #eee;"}
+              %strong
+                = talk.title
+              %br
+              = talk.description.gsub(/\r\n/, "<br>")
+              %br
+              %br
+              %strong Format:
+              = talk.format
+              %br
+              %strong Track:
+              = talk.track
+              %br
+              %strong Time:
+              = talk.time.strftime("%H:%M")
+              %br
+              %strong Speaker:
+              = talk.speaker
