@@ -3,16 +3,16 @@
   %head
     %title
       = t.title
-    = haml :"templates/header_imports"
+    = haml :'header_imports'
   %body
     #layout
       = haml :"cfp/nav"
       #main
         .content
-          Suggestions for CDU 2015 Fall Edition
-          %br
+          %h3
+            = t.cfp.suggestions.title
           - if @suggestions.empty?
-            No suggestions yet
+            = t.cfp.suggestions.empty
 
           - @suggestions.each do | suggestion |
             %div.suggestion{:style => "background: #eee;"}
@@ -22,13 +22,16 @@
               = suggestion.description.gsub(/\r\n/, "<br>")
               %br
               %br
-              %strong Format:
+              %strong
+                = t.cfp.form.format
               = suggestion.format
               %br
-              %strong Track:
+              %strong
+                = t.cfp.form.track
               = suggestion.track
               %br
-              %strong Speaker:
+              %strong
+                = t.cfp.form.speaker
               = suggestion.speaker
               %br
             .padding

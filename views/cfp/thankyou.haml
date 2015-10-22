@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %title
+      = t.title
+    = haml :'header_imports'
+    -green = '#821CB4'
+    -purple = '#B3DB11'
+  %body
+    #layout
+      = haml :"cfp/nav"
+      #main
+        .content
+          = t.cfp.thank-you
+          %br
+          %a{:href => "/cfp/suggestions", :class => "no-underline"}
+            %div{:class => "col-lg-12 big-btn", :style => "background: #{green}; color: #{purple};"}
+              = t.cfp.menu.suggestions

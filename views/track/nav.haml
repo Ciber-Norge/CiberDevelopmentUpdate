@@ -10,8 +10,11 @@
           = t.tracks.menu.home
       - @tracks.each do | track |
         %li.pure-menu-item
-          %a.pure-menu-link{:href => "/track/#{track.title}"}
-            = track.title
-      %li
-        %a{:href => "/track/now"}
-          Now
+          %a.pure-menu-link{:href => "/track/#{track}"}
+            = track
+      %li.pure-menu-item
+        %a.pure-menu-link{:href => "/track/all"}
+          = t.tracks.menu.all
+      %li.pure-menu-item
+        %a.pure-menu-link{:href => "/track/now"}
+          = t.tracks.menu.now

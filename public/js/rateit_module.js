@@ -9,20 +9,22 @@ $('#rating .rateit').bind('rated', function(e) {
 
     // maybe we want to disable voting?
     // ri.rateit('readonly', true);
-    $.ajax({
-        url: '/ajax/rateit', //your server side script
-        data: {
-            id: spotId,
-            value: value
-        }, //our data
-        type: 'POST',
-        success: function(data) {
-            var obj = jQuery.parseJSON(data);
-            $('div[data-spotId="' + obj["id"] + '"]').rateit('value', obj["value"]);
-	    $('#ratings')[0].innerHTML = obj["ratings"]
-        },
-        error: function(jxhr, msg, err) {
-            // What TODO here?
-        }
-    });
+    if (confirm('Press \'Ok\' if this talk really is worth ' + value + ' points')) {
+	$.ajax({
+            url: '/ajax/rateit', //your server side script
+            data: {
+		id: spotId,
+		value: value
+            }, //our data
+            type: 'POST',
+            success: function(data) {
+		var obj = jQuery.parseJSON(data);
+		$('div[data-spotId="' + obj["id"] + '"]').rateit('value', obj["value"]);
+		$('div[data-spotId="' + obj["id"] + '"]').parent().find('#ratings')[0].innerHTML = obj["ratings"]
+            },
+            error: function(jxhr, msg, err) {
+		// What TODO here?
+            }
+	});
+    }
 });

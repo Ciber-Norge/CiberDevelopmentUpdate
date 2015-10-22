@@ -1,15 +1,17 @@
 !!!
 %html
   %head
-    %title Ciber Developer Update
-    = haml :'templates/header_imports'
+    %title
+      = t.title
+    = haml :'header_imports'
   %body
     #layout
       = haml :'track/nav'
       #main
         .content
           %h3
-            Track #{params["track"]}
+            = t.tracks.track
+            = params["track"]
           - @talks.each do | talk |
             - color = '#eee'
             - if defined? is_now and is_now
@@ -27,27 +29,30 @@
                 = talk.description
 
               #rating
-                Rate
+                = t.tracks.rate
                 = surround '(', '):' do
                   = "<span id=\"ratings\">#{talk.ratings.size}</span>"
                 .rateit{"data-spotid" => talk.id, "data-rateit-resetable" => "false", "data-rateit-step" => "1", "data-rateit-value" => talk.rating}
               .toggleComment
-                Kommenter:
+                = t.tracks.comment
               .slideComment
                 %form.pure-form{:action => "/comment/#{params["track"]}/#{talk.id}", :method => "post"}
                   %textarea{:name => "comment[comment]", :style => "width: 90%;", :placeholder => "Skriv inn en kommentar", :rows => "2"}
                   .form-group
-                    %label{:for => "author"} Navn
+                    %label#author
+                      = t.tracks.name
                     %input#author{:name => "comment[author]", :placeholder => "Navn", :style => "display: inline-block; margin-bottom: 0px; vertical-align: middle; width: auto;"}
-                    %button.btn.btn-default{:type => "submit"} Send
+                    %button.btn.btn-default{:type => "submit"}
+                      = t.tracks.submit
+            .padding
 
-  :javascript
-    $(document).ready(function() {
-      #{File.read('public/js/rateit_module.js')}
-      $(".toggleDescription").click(function() {
-        $(this).nextAll('.slideDescription').first().slideToggle();
+    :javascript
+      $(document).ready(function() {
+        #{File.read('public/js/rateit_module.js')}
+        $(".toggleDescription").click(function() {
+          $(this).nextAll('.slideDescription').first().slideToggle();
+        });
+        $(".toggleComment").click(function() {
+          $(this).nextAll('.slideComment').first().slideToggle();
+        });
       });
-      $(".toggleComment").click(function() {
-        $(this).nextAll('.slideComment').first().slideToggle();
-      });
-    });

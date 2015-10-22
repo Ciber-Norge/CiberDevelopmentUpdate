@@ -1,0 +1,36 @@
+!!!
+%html
+  %head
+    %title
+      = t.title
+    = haml :"header_imports"
+  %body
+    #layout
+      = haml :"admin/nav"
+    #main
+      .content
+        %h3
+          = t.admin.comments.title
+        - if @comments.empty?
+          = t.admin.comments.empty
+          
+        - @comments.each do | comment |
+          %div.comment{:style => "background: #eee;"}
+            %strong
+              = t.admin.comments.talk
+            = comment.talk.title
+            %br
+            %strong
+              = t.admin.comments.author
+            = comment.author
+            %br
+            %strong
+              = t.admin.comments.comment
+            = comment.comment
+            %br
+            %form.pure-form{:method => "post", :role => "form"}
+              %input{:name => "id", :value => comment.id, :type => "hidden"}
+
+              %button.btn.btn-default{:name => "delete"}
+                = t.admin.talks.delete
+          .padding

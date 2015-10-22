@@ -1,17 +1,18 @@
 !!!
 %html
   %head
-    %title Ciber Developer Update
-    = haml :"templates/header_imports"
+    %title
+      = t.title
+    = haml :"header_imports"
   %body
     #layout
       = haml :"admin/nav"
       #main
         .content
           %h3
-            Talks for CDU 2015 Spring Edition
+            = t.admin.talks.content
           - if @talks.empty?
-            No talks yet
+            = t.admin.talks.empty
 
           - @talks.each do | talk |
             %div.suggestion{:style => "background: #eee;"}
@@ -21,14 +22,40 @@
               = talk.description.gsub(/\r\n/, "<br>")
               %br
               %br
-              %strong Format:
+              %strong
+                = t.admin.talks.format
               = talk.format
               %br
-              %strong Track:
+              %strong
+                = t.admin.talks.track
               = talk.track
               %br
-              %strong Time:
+              %strong
+                = t.admin.talks.time
               = talk.time.strftime("%H:%M")
               %br
-              %strong Speaker:
+              %strong
+                = t.admin.talks.speaker
               = talk.speaker
+              %br
+              %form.pure-form{:method => "post", :role => "form"}
+                %input{:name => "id", :value => talk.id, :type => "hidden"}
+
+                %label{:for => "track"}
+                  = t.admin.form.pick_track
+                %select#track{:name => "track"}
+                  %option{:value => "no_value"} No track
+                  - @tracks.each do | track |
+                    %option{:value => track.title, :selected => track.title == talk.track}
+                      = track.title
+
+                %label{:for => "time"}
+                  = t.admin.form.change_time
+                %input#time{:name => "time", :type => "time", :value => talk.time.strftime("%H:%M")}
+
+                %button.btn.btn-default{:name => "submit"}
+                  = t.admin.form.change_time_button
+
+                %button.btn.btn-default{:name => "delete"}
+                  = t.admin.talks.delete
+            .padding

@@ -1,16 +1,33 @@
 class DUT < Sinatra::Application
   get '/track/now' do
-    haml :now
+    event_id = Configuration.find_by_name("event").value
+    @talks = []
+    @tracks = Talk.where('event_id = ?', event_id)
+      .select('track').distinct.map { | talk | talk.track }
+    haml :'track/now'
+  end
+
+  get '/track/all' do
+    event_id = Configuration.find_by_name("event").value
+    @talks = Talk.where('event_id = ?', event_id).order('time')
+    @tracks = Talk.where('event_id = ?', event_id)
+      .select('track').distinct.map { | talk | talk.track }
+    haml :'track/all'
   end
 
   get '/track/:track' do | track |
-    @tracks = Track.order("title DESC")
-    @talks = Talk.where("track = ?", track)
+    event_id = Configuration.find_by_name("event").value
+    @talks = Talk.where('event_id = ? and track = ?', event_id, track).order('time')
+    @tracks = Talk.where('event_id = ?', event_id)
+      .select('track').distinct.map { | talk | talk.track }
     haml :"track/track"
   end
 
   post '/comment/:track/:id' do | track, id |
-    comment = Comment.new(params["comment"], :talk_id => id)
+    event_id = Configuration.find_by_name("event").value
+    comment = Comment.new(params["comment"])
+    comment.talk_id = id
+    comment.event_id = event_id
     comment.save
     redirect 'track/' + track
   end

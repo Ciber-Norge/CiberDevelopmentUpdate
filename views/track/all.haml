@@ -11,7 +11,7 @@
         .content
           %h3
             = t.tracks.track
-            = t.tracks.menu.now
+            = t.tracks.menu.all
           - @talks.each do | talk |
             - color = '#eee'
             - if defined? is_now and is_now

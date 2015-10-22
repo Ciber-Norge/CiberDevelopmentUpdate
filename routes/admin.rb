@@ -76,6 +76,32 @@ class DUT < Sinatra::Application
   get '/admin/talks' do
     event = Configuration.find_by_name("event")
     @talks = Talk.where("event_id = ?", event.value).order("title DESC")
+    @tracks = Track.order("title DESC")
     haml :"admin/talks"
+  end
+
+  post '/admin/talks' do
+    talk = Talk.find(params[:id])
+    redirect 'admin/talks' unless talk
+    if params.has_key?('delete')
+      talk.destroy
+    else
+      talk.time = params['time']
+      talk.track = params['track']
+      talk.save
+    end
+    redirect 'admin/talks'
+  end
+
+  get '/admin/comments' do
+    event_id = Configuration.find_by_name("event").value
+    @comments = Comment.where('event_id = ?', event_id).order('talk_id')
+    haml :"admin/comments"
+  end
+
+  post '/admin/comments' do
+    comment = Comment.find(params[:id])
+    comment.destroy if comment
+    redirect 'admin/comments'
   end
 end

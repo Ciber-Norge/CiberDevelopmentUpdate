@@ -255,6 +255,24 @@ a:active.no-underline {
 .track-spot .speaker {
 	font-style: italic
 }
+.pull-right {
+  float: right!important;
+}
+.label-info {
+  background-color: #5bc0de;
+}
+.label {
+  isplay: inline;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}
 .comment {
 	border-left: 5px solid #B3DB11;
 	padding-left: 5px;

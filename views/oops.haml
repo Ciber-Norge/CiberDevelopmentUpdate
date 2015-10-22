@@ -1,15 +1,24 @@
 !!!
 %html
   %head
-    %title Ciber Developer Update
-    = haml :"templates/header_imports"
-    -green = '#821CB4'
-    -purple = '#B3DB11'
+    %title
+      = t.title
+      = haml :'header_imports'
   %body
-    = haml :"templates/nav"
-    .container
-      .col-lg-6
-        %h1
-          Okay...one of us has done something wrong...
-      .col-lg-2
-        %img{:src => "/images/oh-yeah.jpg", :alt => "404 image of Ryan Gosling"}
+    #layout
+      / Menu toggle
+      %a#menuLink.menu-link{:href => "#menu"}
+        / Hamburger icon
+        %span
+      #menu
+        .pure-menu
+          %ul.pure-menu-list
+            %li.pure-menu-item
+              %a.pure-menu-link{:href => "/"}
+                = t.oops.menu.home
+
+      #main
+        .header
+        .content
+          = t.oops.content
+          %img{:src => "/images/oh-yeah.jpg", :alt => t.opps.image_alt}

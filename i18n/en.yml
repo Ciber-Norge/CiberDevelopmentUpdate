@@ -1,6 +1,8 @@
 title: Ciber Development Update
 main:
   content: Welcome to Ciber Development Update. Stay a while, and listen!
+  now: Now
+  all: All
 
 admin:
   content: Welcome to the admin panel
@@ -8,6 +10,11 @@ admin:
     site_mode: Site mode
     event: Event
     submit: Save
+    pick_track: Pick track
+    set_time: Set time
+    add_talk: Add talk
+    change_time: Change time
+    change_time_button: Change
   menu:
     home: Home
     admin: Admin
@@ -15,6 +22,35 @@ admin:
     tracks: Tracks
     suggestions: Suggestions
     talks: Talks
+    comments: Comments
+  tracks:
+    title: Title
+    delete: Delete
+    create: Create track
+    add: Add track
+  events:
+    new_event: Add a new event!
+    errors: Errors
+    title: Title
+    date: Date
+    place: Place
+    description: Description
+    cfp_description: Call for Paper description
+    create_event: Create event
+  talks:
+    content: Talks for CDU 2015 Spring Edition
+    empty: No talks yet
+    format: Format
+    track: Track
+    time: Time
+    speaker: Speaker
+    delete: Delete
+  comments:
+    title: Comments
+    talk: 'Talk:'
+    author: 'Author:'
+    comment: 'Comment:'
+    empty: There are no comments, yet...
 
 cfp:
   title: Call for Papers
@@ -28,7 +64,7 @@ cfp:
   suggestions:
     title: Suggestions for CDU
     content: 
-    no-suggestions: There are no suggestions yet.
+    empty: There are no suggestions yet.
   menu:
     home: Home
     cfp: Call for Papers
@@ -37,3 +73,14 @@ cfp:
 tracks:
   menu:
     home: Home
+    all: All
+    now: Now
+  rate: Rate
+  comment: 'Comment:'
+  name: Name
+  submit: Send
+  track: 'Track:'
+
+oops:
+  content: Okay...one of us has done something wrong...
+  image_alt: 404 image of Ryan Gosling
