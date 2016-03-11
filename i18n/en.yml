@@ -38,7 +38,7 @@ admin:
     cfp_description: Call for Paper description
     create_event: Create event
   talks:
-    content: Talks for CDU 2015 Spring Edition
+    content: Talks for CDU 2016 Spring Edition
     empty: No talks yet
     format: Format
     track: Track
@@ -54,7 +54,7 @@ admin:
 
 cfp:
   title: Call for Papers
-  content: CDU kicks off in the end of October! We are hoping for many great speaches! Of course, this depends on you. Call for Papers is open until Sunday, 18th of October and we encourage everyone to spend the time well and come up with something you can contribute with. Practice Managers and team leaders will also "remind" you, so that the message is not forgotten!<br />Submit your speach in the form below.
+  content: CDU kicks off in the middle of May! We are hoping for many great speaches! Of course, this depends on you. Call for Papers is open until the day it closes and we encourage everyone to spend the time well and come up with something you can contribute with. Practice Managers and team leaders will also "remind" you, so that the message is not forgotten!<br />Submit your speach in the form below.
   form:
     title: Title
     description: Description
