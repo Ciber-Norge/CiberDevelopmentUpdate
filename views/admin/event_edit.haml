@@ -23,44 +23,26 @@
           %form.pure-form.pure-form-stacked{:method => "post", :role => "form"}
             %label{:for => "title"}
               = t.admin.events.title
-            %input#title{:name => "event[title]", :type => "text"}
+            %input#title{:name => "event[title]", :type => "text", :value => @event.title}
 
             %label{:for => "start_date"}
               = t.admin.events.date
-            %input#start_date{:name => "event[start_date]", :type => "date"}
+            %input#start_date{:name => "event[start_date]", :type => "date", :value => @event.start_date}
 
             %label{:for => "place"}
               = t.admin.events.place
-            %input#place{:name => "event[place]", :type => "text"}
+            %input#place{:name => "event[place]", :type => "text", :value => @event.place}
 
             %label{:for => "description"}
               = t.admin.events.description
             %textarea#description{:name => "event[description]", :rows => "4"}
+              = @event.description
 
             %label{:for => "cfp_description"}
               = t.admin.events.cfp_description
             %textarea#cfp_description{:name => "event[cfp_description]", :rows => "4"}
+              = @event.cfp_description
 
             %button.btn.btn-default{:type => "submit"}
-              = t.admin.events.create_event
+              = t.admin.events.update_event
           .padding
-
-          %table.pure-table
-            %thead
-              %tr
-                %th
-                  = t.admin.events.title
-                %th
-                  = t.admin.events.date
-                %th
-                  = t.admin.events.place
-                %th
-            %tbody
-              - @events.each do | event |
-                %tr
-                  %th #{event.title}
-                  %th #{event.start_date}
-                  %th #{event.place}
-                  %th
-                    %a{:href => "events/#{event.id}/edit"}
-                      Edit

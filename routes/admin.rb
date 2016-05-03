@@ -38,6 +38,17 @@ class DUT < Sinatra::Application
     end
   end
 
+  get '/admin/events/:id/edit' do | id |
+    @event = Event.find(id)
+    haml :"admin/event_edit"
+  end
+
+  post '/admin/events/:id/edit' do | id |
+    @event = Event.find(id)
+    @event.update(params["event"])
+    redirect 'admin/events'
+  end
+
   get '/admin/suggestions' do
     event = Configuration.find_by_name("event")
     @suggestions = Suggestion.where("event_id = ?", event.value).order("title DESC")

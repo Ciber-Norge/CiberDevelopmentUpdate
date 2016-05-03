@@ -1,4 +1,2 @@
-CiberDevelopmentUpdate
-======================
-
-Ciber Development Update site
+Development Update Template
+===========================

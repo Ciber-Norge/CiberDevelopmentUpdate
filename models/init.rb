@@ -1,4 +1,5 @@
 require 'pg'
+require 'securerandom'
 
 db_url = ENV['DATABASE_URL'] || 'postgres://postgres:postgres@localhost/dut'
 db = URI.parse(db_url)

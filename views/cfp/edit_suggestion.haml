@@ -1,0 +1,62 @@
+!!!
+%html
+  %head
+    %title
+      = t.title
+    = haml :'header_imports'
+  %body
+    #layout
+      = haml :"cfp/nav"
+      #main
+        .content
+          - if @errors
+            - @errors.each do | key, value |
+              = key
+              = value
+              %br
+          %form.pure-form.pure-form-stacked{:method => "post", :role => "form"}
+            %fieldset
+              .pure-control-group
+                %label{:for => "title"}
+                  = t.cfp.form.title
+                %input#tittel{:name => "suggestion[title]", :value => @suggestion.title, :placeholder => "Title", :type => "text", :style => "width: 100%;"}
+
+              .pure-control-group
+                %label{:for => "description"}
+                  = t.cfp.form.description
+                %textarea#beskrivelse{:name => "suggestion[description]", :placeholder => "Description", :style => "width: 100%;", :rows => "4"}
+                  = @suggestion.description
+
+              .pure-control-group
+                %label{:for => "format"}
+                  = t.cfp.form.format
+                %select#format{:name => "suggestion[format]", :style => "width: 100%;"}
+                  %option{:value => "45 minute talk", :selected => @suggestion.format} 45 minute talk
+                  %option{:value => "10 lightning talk", :selected => @suggestion.format} 10 lightning talk
+                  %option{:value => "workshop", :selected => @suggestion.format} Workshop
+                  %option{:value => "other", :selected => @suggestion.format} Other
+
+              .pure-control-group
+                %label{:for => "track"}
+                  = t.cfp.form.track
+                %select#selectbasic{:name => "suggestion[track]", :style => "width: 100%;"}
+                  %option{:value => "no-value"} Pick track
+                  - @tracks.each do | track |
+                    %option{:name => track.id, :selected => @suggestion.track == track.id}
+                      = track.title
+
+              .pure-control-group
+                %label{:for => "speaker"}
+                  = t.cfp.form.speaker
+                %input#tittel{:name => "suggestion[speaker]", :value => @suggestion.speaker, :placeholder => "Speaker", :type => "text", :style => "width: 100%;"}
+
+              .pure-control-group
+                %button.pure-button.pure-button-primary{:name => "submit"} Update
+
+          %form.pure-form.pure-form-stacked{:method => "post", :role => "form"}
+
+            .pure-control-group
+              %button.pure-button.pure-button-warning{:name => "delete"} Delete
+
+              .pure-control-group
+                %br
