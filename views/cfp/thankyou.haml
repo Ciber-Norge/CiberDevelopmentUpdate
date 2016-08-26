@@ -11,7 +11,13 @@
       = haml :"cfp/nav"
       #main
         .content
-          = t.cfp.thank-you
+          = t.cfp.thank_you
+          %p
+            You can edit your suggestions by visiting
+            %a{:href => @secret_link}
+              =  @secret_link
+            %br
+            Remember to save it for later.
           %br
           %a{:href => "/cfp/suggestions", :class => "no-underline"}
             %div{:class => "col-lg-12 big-btn", :style => "background: #{green}; color: #{purple};"}

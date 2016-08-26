@@ -46,8 +46,10 @@
 
                 %label{:for => "time"}
                   = t.admin.form.set_time
-                %input#time{:name => "time", :type => "time"}
+                %input#time{:class => "time ui-timepicker-input", :name => "time", :type => "text", :autocomplete => "off"}
 
                 %button.btn.btn-default{:name => "submit"}
                   = t.admin.form.add_talk
             .padding
+    :javascript
+      $('#time').timepicker({ 'timeFormat': 'H:i:s' });
