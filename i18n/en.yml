@@ -1,6 +1,6 @@
-title: Ciber Development Update
+title: Ciber Practice Update
 main:
-  content: Welcome to Ciber Development Update. Stay a while, and listen!
+  content: Welcome to Ciber Practice Update. Stay a while, and listen!
   now: Now
   all: All
 
@@ -54,7 +54,7 @@ admin:
 
 cfp:
   title: Call for Papers
-  content: CDU kicks off in the end of October! The date of this years 2nd CDU is 26.10. We are hoping for many great speeches! Of course, this depends on you. Call for Papers is open until the day it closes, which is 6th October, and we encourage everyone to spend the time well and come up with something you can contribute with. Practice Managers and team leaders will also "remind" you, so that the message is not forgotten! Submit your speach in the form below.
+  content: CPU kicks off in the begining of June! The date of this years 1st CPU is 02.06. We are hoping for many great speeches! Of course, this depends on you. Call for Papers is open until the day it closes, which is 6th October, and we encourage everyone to spend the time well and come up with something you can contribute with. Practice Managers and team leaders will also "remind" you, so that the message is not forgotten! Submit your speach in the form below.
   form:
     title: Title
     description: Description
@@ -62,7 +62,7 @@ cfp:
     track: Track
     speaker: Speaker
   suggestions:
-    title: Suggestions for CDU
+    title: Suggestions for CPU
     content: 
     empty: There are no suggestions yet.
   menu:
